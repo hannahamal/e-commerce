@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register with CAPTCHA</title>
+    <link rel="stylesheet" href="new.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+
+        <div class="captcha-container">
+            <canvas id="captchaCanvas"></canvas>
+            <button onclick="generateCaptcha()">🔄 Refresh</button>
+        </div>
+        
+        <input type="text" id="captchaInput" placeholder="Enter CAPTCHA" required>
+        <button onclick="validateCaptcha()">Register</button>
+
+        <p id="status-message"></p>
+    </div>
+
+    <script src="nscript.js"></script>
+</body>
+</html>

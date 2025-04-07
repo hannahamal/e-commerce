@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Loading Bar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .progress-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: auto;
+            display: none; /* Initially hidden */
+        }
+        .progress-bar {
+            width: 0%;
+            height: 30px;
+            background-color: #4caf50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+            transition: width 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Checkout Process</h2>
+    <button onclick="startCheckout()">Proceed to Checkout</button>
+    <br><br>
+
+    <div class="progress-container" id="progress-container">
+        <div class="progress-bar" id="progress-bar">0%</div>
+    </div>
+
+    <p id="status-message"></p>
+
+    <script>
+        function startCheckout() {
+            let progress = 0;
+            const progressBar = document.getElementById("progress-bar");
+            const progressContainer = document.getElementById("progress-container");
+            const statusMessage = document.getElementById("status-message");
+
+            // Reset UI
+            progressContainer.style.display = "block";
+            progressBar.style.width = "0%";
+            progressBar.textContent = "0%";
+            statusMessage.textContent = "";
+
+            // Simulate checkout loading
+            const interval = setInterval(() => {
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    statusMessage.textContent = "Checkout Complete!";
+                } else {
+                    progress += 10;
+                    progressBar.style.width = progress + "%";
+                    progressBar.textContent = progress + "%";
+                }
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>
